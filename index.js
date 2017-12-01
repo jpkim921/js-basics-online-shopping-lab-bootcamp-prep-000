@@ -49,8 +49,21 @@ function total() {
   return total;
 }
 
-
-
+function removeFromCart(item) {
+	var status = false;
+	
+	for(var i = 0; i < cart.length; i++){
+	    if(cart[i].hasOwnProperty(item) === true){
+	    	status = true;
+	    	cart = cart.slice(0, i).concat(cart.slice(i + 1))
+	    	return cart;
+	    }
+	}
+	
+	if(status === false){
+		console.log("That item is not in your cart.")
+	}
+}
 function placeOrder(cardNumber) {
   // write your code here
   if(cardNumber === undefined){
@@ -62,14 +75,3 @@ function placeOrder(cardNumber) {
   }
 
 }
-
-
-
-function removeFromCart(item) {
-			if(cart.hasOwnProperty(item) === true){
-				delete cart.item;
-			} else {
-				console.log("That item is not in your cart.");
-			}
-			return cart;
-		}
